@@ -93,7 +93,26 @@ export const styles = (isDark: boolean) =>
       width: "100%",
       marginBottom: 24,
     },
-
+    inputContainerCode: {
+      flexDirection: "row", // poner en fila
+      justifyContent: "center", // centrar horizontal
+      alignItems: "center", // centrar vertical
+      marginBottom: 24,
+    },
+    letraInputsCode: {
+      width: 50,
+      height: 50,
+      borderWidth: 1,
+      borderColor: "#ccc",
+      borderRadius: 8,
+      textAlign: "center",
+      fontSize: 18,
+      color: isDark ? colors.darkTextPrimary : colors.lightTextPrimary,
+      backgroundColor: isDark
+        ? colors.darkBackgroundInput
+        : colors.lightBackgroundInput,
+      marginHorizontal: 5,
+    },
     letraInpus: {
       fontSize: 16,
       color: isDark ? colors.darkTextPrimary : colors.lightTextPrimary,
@@ -158,6 +177,12 @@ export const styles = (isDark: boolean) =>
     },
     alertasFallidas: {
       color: isDark ? colors.darkErrorTextAlert : colors.lightErrorTextAlert,
+      marginBottom: 8,
+    },
+    alertasExitosas: {
+      color: isDark
+        ? colors.darkSuccessTextAlert
+        : colors.lightSuccessTextAlert,
       marginBottom: 8,
     },
   });
