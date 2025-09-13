@@ -185,4 +185,15 @@ export const styles = (isDark: boolean) =>
         : colors.lightSuccessTextAlert,
       marginBottom: 8,
     },
+    image: {
+      width: 200,
+      height: 200,
+      borderRadius: 20,
+      resizeMode: "contain", // ajusta la imagen dentro del área es decir dentro de width y heigth
+      borderWidth: 2,
+      borderColor: "#333", // borde oscuro
+      elevation: 5,
+      marginBottom: 30,
+      backgroundColor: "#764ba2",
+    },
   });

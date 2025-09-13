@@ -1,5 +1,5 @@
 import { styles } from "@/styles/globalStyles";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   View,
   Pressable,
@@ -16,10 +16,18 @@ export default function EmailVerification() {
   const tema = useColorScheme() === "dark";
   const style = styles(tema);
 
+  // Solo esto para las referencias
+  const inputs = useRef<(TextInput | null)[]>([]);
+
   const CodeChange = (text: string, index: number) => {
     const newCode = [...code];
     newCode[index] = text;
     setCode(newCode);
+
+    // Solo esta línea para auto-navegar
+    if (text && index < 3 && inputs.current[index + 1]) {
+      inputs.current[index + 1]?.focus();
+    }
   };
 
   return (
@@ -34,14 +42,21 @@ export default function EmailVerification() {
         </Text>
         <View style={style.inputContainerCode}>
           <TextInput
+            ref={(ref) => {
+              inputs.current[0] = ref;
+            }}
             style={style.letraInputsCode}
             placeholderTextColor={tema ? "#a0aec0" : "#718096"}
             value={code[0]}
             onChangeText={(text) => CodeChange(text, 0)}
             maxLength={1}
             keyboardType="numeric"
+            autoFocus
           />
           <TextInput
+            ref={(ref) => {
+              inputs.current[1] = ref;
+            }}
             style={style.letraInputsCode}
             placeholderTextColor={tema ? "#a0aec0" : "#718096"}
             value={code[1]}
@@ -50,6 +65,9 @@ export default function EmailVerification() {
             keyboardType="numeric"
           />
           <TextInput
+            ref={(ref) => {
+              inputs.current[2] = ref;
+            }}
             style={style.letraInputsCode}
             placeholderTextColor={tema ? "#a0aec0" : "#718096"}
             value={code[2]}
@@ -58,6 +76,9 @@ export default function EmailVerification() {
             keyboardType="numeric"
           />
           <TextInput
+            ref={(ref) => {
+              inputs.current[3] = ref;
+            }}
             style={style.letraInputsCode}
             placeholderTextColor={tema ? "#a0aec0" : "#718096"}
             value={code[3]}
@@ -69,7 +90,7 @@ export default function EmailVerification() {
         <Pressable style={style.botones}>
           <Text style={style.textoBoton}>Verificar codigo</Text>
         </Pressable>
-        <Text style={style.separador}>¿No recibiste el codigo ?</Text>
+        <Text style={style.separador}>¿No recibiste el codigo?</Text>
       </ScrollView>
     </KeyboardAvoidingView>
   );

@@ -32,7 +32,7 @@ export default function Login() {
     }
     if (hayError) return;
 
-    router.push("/(tabs)/explore");
+    router.push("/welcome");
   };
 
   return (
